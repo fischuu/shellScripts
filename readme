@@ -1,0 +1,5 @@
+fastqTofasta:
+  Tool that transform a fastq file into fasta format. 
+  Usage:
+
+      fastqTofasta input.fastq output.fasta
