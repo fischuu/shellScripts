@@ -1,3 +1,6 @@
 fastqTofasta:
   Tool that transform a fastq file into fasta format. 
   Usage: fastqTofasta input.fastq output.fasta
+
+subWhitespaceToReturn:
+  Tools that substitutes all whitespace in a file with Returns
