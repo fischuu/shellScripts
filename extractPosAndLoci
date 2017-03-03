@@ -10,5 +10,8 @@ echo "1. Extracting the samples : vcf-subset -c $2 $1 | bgzip -c > $prefix.$samp
 vcf-subset -c $2 $1 | bgzip -c > $prefix.$samples.vcf.gz
 echo "2. Tabix the temp vcf file: tabix -p vcf $prefix.$samples.vcf.gz"
 tabix -p vcf $prefix.$samples.vcf.gz
-echo "3. Extract the positions  : tabix $prefix.$samples.vcf.gz $3 | bgzip -c > $prefix.$samples.regionFiltered.vcf.gz"
-tabix $prefix.$samples.vcf.gz $3 | bgzip -c > $prefix.$samples.regionFiltered.vcf.gz
+echo "3. Extract the positions  : tabix -h $prefix.$samples.vcf.gz $3 | bgzip -c > $prefix.$samples.regionFiltered.vcf.gz"
+tabix -h $prefix.$samples.vcf.gz $3 | bgzip -c > $prefix.$samples.regionFiltered.vcf.gz
+echo "4. Clean intermediate files away"
+rm  $prefix.$samples.vcf.gz
+rm  $prefix.$samples.vcf.gz.tbi
