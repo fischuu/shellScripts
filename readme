@@ -1,9 +1,9 @@
 extractPosAndLoci:
   Tool to extract a defined position and set of samples from a multisample vcf file
   Usage: extractPosAndLoci vcfFile sampleId position
-  with vcfFile being the filename of the starting vcf file, sampleId are the corresponding column names
-  in the vcf file to extract (if more than one, connect them with a ',') and position is the area to extract
-  in format Chr:Start-End
+  with vcfFile being the filename of the starting vcf file, sampleId are the corresponding
+  column names in the vcf file to extract (if more than one, connect them with a ',') and
+  position is the area to extract in format Chr:Start-End
   
 fastqTofasta:
   Tool that transform a fastq file into fasta format. 
