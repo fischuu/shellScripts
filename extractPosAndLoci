@@ -1,0 +1,14 @@
+echo "Extracting Positions and Samples from vcf-file"
+echo "=============================================="
+echo "VCF-File:" $1
+prefix=${1/.vcf.gz/}
+echo "Samples:" $2
+samples=${2//,/.}
+echo "Positions:" $3
+
+echo "1. Extracting the samples : vcf-subset -c $2 $1 | bgzip -c > $prefix.$samples.vcf.gz"
+vcf-subset -c $2 $1 | bgzip -c > $prefix.$samples.vcf.gz
+echo "2. Tabix the temp vcf file: tabix -p vcf $prefix.$samples.vcf.gz"
+tabix -p vcf $prefix.$samples.vcf.gz
+echo "3. Extract the positions  : tabix $prefix.$samples.vcf.gz $3 | bgzip -c > $prefix.$samples.regionFiltered.vcf.gz"
+tabix $prefix.$samples.vcf.gz $3 | bgzip -c > $prefix.$samples.regionFiltered.vcf.gz
