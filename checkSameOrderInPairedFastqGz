@@ -1,0 +1,1 @@
+cmp -s <(gzip -cd GB2NA_R1.fastq.gz |  sed -n '1~4p' | awk '{print $1}') <(gzip -cd GB2NA_R2.fastq.gz |  sed -n '1~4p' | awk '{print $1}') 
