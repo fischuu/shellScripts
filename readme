@@ -1,3 +1,8 @@
+checkSameOrderInPairedFastqGz:
+  Tool that takes two gezipped fastq files and checks if the read header lines match. That
+  means the tool checks, if the reads are in the same order. This is especially then useful,
+  when the fastq.gz files have been merged or created in some other way.
+
 extractPosAndLoci:
   Tool to extract a defined position and set of samples from a multisample vcf file
   Usage: extractPosAndLoci vcfFile sampleId position
