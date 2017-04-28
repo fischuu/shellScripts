@@ -14,5 +14,9 @@ fastqTofasta:
   Tool that transform a fastq file into fasta format. 
   Usage: fastqTofasta input.fastq output.fasta
 
+getLociFromGTF:
+  Tool that extracts data from gtf file
+  Usage: getLociFromGTF gtfInput Column Chromosome Start End Output
+
 subWhitespaceToReturn:
   Tools that substitutes all whitespace in a file with Returns
