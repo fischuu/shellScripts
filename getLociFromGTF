@@ -1,0 +1,13 @@
+# This script extract the genes from a gtf file
+
+echo "Used gtf file    :" $1
+echo "Column identifier: "$2
+echo "Chromosome       : "$3
+echo "Start            : "$4
+echo "End              : "$5
+echo "Output           : "$6
+
+sed 1,5d $1 | \
+awk -v colID="$2" '$3 == colID' | \
+awk -v chr="$3" '$1 == chr' | \
+awk -v start="$4" -v end="$5" '$4 > start && $5 < end' > $
