@@ -1,0 +1,31 @@
+echo "Extracting Positions vcf-file based on bed-file information"
+echo "==========================================================="
+echo "VCF-File-Postfix:" $1
+prefix=${1/.vcf.gz/}
+echo "bed-File:" $2
+
+
+# Loop through the bed file and extract the row information
+while read p; do
+  rowContent=($p)
+  chr=${rowContent[0]}
+  start=${rowContent[1]}
+  end=${rowContent[2]}
+  echo " "
+  echo "Processing" $chr":"$start"-"$end 
+  echo "----------------------------------------"
+  vcfFile=$chr"-"$1
+  tabixFile=$vcfFile".tbi"
+  echo "Use Chromosome vcf:" $vcfFile 
+
+  if [ ! -f $tabixFile ]; then
+    echo "VCF not tabix'ed. Start to tabix the file"
+    gunzip $vcfFile
+    bgzip $chr-$prefix.vcf
+    tabix -p vcf $vcfFile
+  fi
+  
+  echo "tabix -h" $vcfFile $chr:$start-$end " | bgzip -c >" $chr$prefix"."$start"-"$end".vcf.gz"
+  tabix -h $vcfFile $chr:$start-$end  | bgzip -c > $chr$prefix.$start-$end.vcf.gz
+  
+done < $2
