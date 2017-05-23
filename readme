@@ -1,3 +1,7 @@
+BedToVCF:
+  This script takes a vcf postfix and a bed file, prepares the tabix index for the vcf and
+  extracts then the loci from the bed into a new vcf-file
+
 checkSameOrderInPairedFastqGz:
   Tool that takes two gezipped fastq files and checks if the read header lines match. That
   means the tool checks, if the reads are in the same order. This is especially then useful,
